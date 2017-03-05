@@ -29,11 +29,9 @@ int mainDiagonalSum (int n)
     return sum;
 }
 
-int secondaryDiagonalSum (int** a)
+int secondaryDiagonalSum (int n)
 {
     int sumE = 0;
-    
-    int n = 3;
     
     int k=--n;
     
@@ -85,7 +83,7 @@ int main(int argc, const char * argv[]) {
     
     cout << "Sum of main diagonal elements: "<< mainDiagonalSum(3) << endl;
     
-    cout << "Sum of secondary diagonal elements: "<< secondaryDiagonalSum( a[3][3]) << endl;
+    cout << "Sum of secondary diagonal elements: "<< secondaryDiagonalSum(3) << endl;
     
     return 0;
 }
