@@ -1,15 +1,91 @@
-//
-//  main.cpp
-//  JekaPatsanDeTreaba
-//
-//  Created by Iunona Panasenco on 3/5/17.
-//  Copyright © 2017 Iunona Panasenco. All rights reserved.
-//
-
+#include <ctime>
 #include <iostream>
 
+using namespace std;
+
+#define MAX_ROWS (7)
+int a[MAX_ROWS][MAX_ROWS];
+
+void printArray (){
+    
+    for (int i=0 ; i<3 ; i++) {
+        for (int j=0; j<3 ; j++)
+        {
+            cout<<" "<< a[i][j];
+        }
+        cout<< endl;
+    }
+}
+
+int mainDiagonalSum (int n)
+{
+    int sum = 0;
+    for (int i=0; i< n; i++)
+        for (int j=0; j< n;j++)
+    {
+        if (i==j)
+            sum+=a[i][j];
+    }
+    return sum;
+}
+
+int secondaryDiagonalSum (int** a)
+{
+    int sumE = 0;
+    
+    int n = 3;
+    
+    int k=--n;
+    
+
+    for (int i=0; i< 3; i++) {
+        for (int j=0; j< 3;j++)
+        {
+            if ((i+j)==k) {
+                sumE+=a[i][j];
+               }
+        }
+    }
+    return sumE;
+}
+
+int underMainDiagonalSum (int n)
+{
+    int sumUnderMainDiagonal= 0;
+    
+    for (int i=0; i< 3; i++) {
+        for (int j=0; j< 3;j++)
+        {
+            if (i>j) {
+                sumUnderMainDiagonal +=a[i][j];
+            }
+        }
+    }
+    return sumUnderMainDiagonal;
+}
+
+
+
+
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    srand((unsigned)time(NULL));
+    
+    for (int i=0;i < 3; i++)
+        for (int j=0;j < 3;j++)
+        {
+            a[i][j] = 1+ rand() % 100;
+           
+        }
+    
+    printArray();
+    
+    cout << "Sum  of under main diagonal elements: "<< underMainDiagonalSum(3)<< endl;
+    
+    cout << "Sum of main diagonal elements: "<< mainDiagonalSum(3) << endl;
+    
+    cout << "Sum of secondary diagonal elements: "<< secondaryDiagonalSum( a[3][3]) << endl;
+    
     return 0;
 }
